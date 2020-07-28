@@ -1,5 +1,5 @@
 ### Pre-requisite
-1. **DB Name** - wealthtab or (any of your choice)
+1. **DB Name** - wealthtab
 
 ## Starting App Instructions:
 1. **composer install** - For downloading the required dependencies
@@ -7,7 +7,10 @@
 3. **php artisan db:seed** - For seeding the dummy data into the table
 4. **php artisan serve** - For running application
 
-## About Endpoints
+## About Endpoints 
+
+**Except Login route, each route need to be invoked with Bearer Token received from server**
+
 - [GET] Fetch All Files based on access level => [http://localhost:8000/api/v1/files](http://localhost:8000/api/v1/files).
 - [POST] Login => [http://localhost:8000/api/auth/login](http://localhost:8000/api/auth/login).
 - [GET] Fetch File by id => [http://localhost:8000/api/v1/file/{fileId}](http://localhost:8000/api/v1/file/{fileId}).
