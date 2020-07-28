@@ -1,7 +1,9 @@
 ###Pre-requisite
-1. DB Name - wealthtab or (any of your choice)
+
+1. **DB Name** - wealthtab or (any of your choice)
 
 ##Starting App Instructions:
+
 
 1. **composer install** - For downloading the required dependencies
 2. **php artisan migrate** - For migrating the database tables
@@ -14,3 +16,4 @@
 - [POST] Login => [http://localhost:8000/api/auth/login](http://localhost:8000/api/auth/login).
 - [GET] Fetch File by id => [http://localhost:8000/api/v1/file/{fileId}](http://localhost:8000/api/v1/file/{fileId}).
 
+NOTE: Generally .env file is not tracked because it contains the sensitive information.
