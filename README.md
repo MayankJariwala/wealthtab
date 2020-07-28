@@ -11,5 +11,6 @@
 - [GET] Fetch All Files based on access level => [http://localhost:8000/api/v1/files](http://localhost:8000/api/v1/files).
 - [POST] Login => [http://localhost:8000/api/auth/login](http://localhost:8000/api/auth/login).
 - [GET] Fetch File by id => [http://localhost:8000/api/v1/file/{fileId}](http://localhost:8000/api/v1/file/{fileId}).
+- [GET] Logout => [http://localhost:8000/api/v1/logout](http://localhost:8000/api/v1/logout).
 
 NOTE: Generally .env file is not tracked because it contains the sensitive information.
