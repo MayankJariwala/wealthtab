@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Auth::viaRequest('token-based', function ($request) {
             if (!$request->headers->has('authorization'))
-                abort(401, "Token missing");
+                abort(response()->json(['message' => 'Token missing'], 401));
             $token = hash('sha256', substr($request->headers->get('authorization'), 7));
             return User::where('api_token', $token)->first();
         });
