@@ -7,7 +7,7 @@ use App\Repositories\UserRepository;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
 //TODO: Status code can be use from constants file
@@ -19,6 +19,17 @@ class UsersController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+    }
+
+    // can also place this code in the user service
+    public function logout()
+    {
+        $user = \request()->user();
+        $user->api_token = null;
+        $user->save();
+        return Response::json([
+            "message" => "Logged out"
+        ], 200);
     }
 
     /**
@@ -34,10 +45,10 @@ class UsersController extends Controller
         ]);
         if ($validation_response->fails()) {
             // Can also do this with Resource
-            return response()->json([
+            return Response::json([
                 "code" => 400,
                 "message" => $validation_response->errors()->first()
-            ])->setStatusCode(400);
+            ], 400);
         }
         $email = $request["email"];
         $password = $request["password"];

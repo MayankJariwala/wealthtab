@@ -21,6 +21,11 @@ Route::prefix("auth")->namespace("Api")->group(function () {
 });
 
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:api', 'namespace' => 'Api'], function () {
+    Route::get("logout", [
+        "uses" => "UsersController@logout",
+        "as" => "logout"
+    ]);
+
     Route::get("files", [
         "uses" => "FileOpsController@fetchUserFiles",
         "as" => "user_files"

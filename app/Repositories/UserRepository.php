@@ -30,7 +30,7 @@ class UserRepository
             "password" => $password
         ]);
         if (!$isValid) {
-            throw new Exception();
+            abort(response()->json(['message' => 'Email or Password did not matched.'], 401));
         }
         $user = auth()->user();
         $token = $this->generateApiToken();
