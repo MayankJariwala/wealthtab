@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Model\FileModel;
 use App\Service\FileOpsService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -32,8 +33,16 @@ class FileOpsController extends Controller
      */
     public function fetchUserFiles()
     {
-        // get all files at user level
-        return Response::json(Auth::user()->file_access, 200);
+        $user = request()->user();
+//        if ($user->isAdmin()) {
+//            // if it is admin show all files
+//            // $files = FileModel::all(); This can be other approach if not inserting multiple entries in db
+//            $files = $user->file_access;
+//        } else {
+//            $files = $user->file_access;
+//        }
+        $files = $user->file_access;
+        return Response::json($files, 200);
     }
 
     /**

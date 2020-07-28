@@ -15,7 +15,10 @@ class FileModel extends Model
         'file_link'
     ];
 
-    public function user_permissions(){
-        return $this->hasOne("App\Model\UserLevelModel","access_level","id");
+    protected $hidden = ['access_level'];
+
+    public function user_permissions()
+    {
+        return $this->hasOne("App\Model\UserLevelModel", "access_level", "id");
     }
 }
