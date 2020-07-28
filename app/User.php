@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function file_access()
+    {
+        return $this->hasMany("App\Model\FileModel", "access_level", "access_level");
+    }
 }

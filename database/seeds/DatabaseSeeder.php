@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserAccessLevelSeeder::class,
-            FilesDataSeeder::class
+            FilesDataSeeder::class,
+            UserDataSeeder::class
         ]);
     }
 }

@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix("auth")->namespace("Api")->group(function () {
+    Route::post("login", [
+        "uses" => "UsersController@login",
+        "as" => "login"
+    ]);
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix("v1")->group(function () {
+    Route::get("data", function () {
+        return response()->json([
+            "data" => "as"
+        ]);
+    });
 });
