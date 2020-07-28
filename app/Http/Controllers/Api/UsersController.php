@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
-use http\Exception\RuntimeException;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
+//TODO: Status code can be use from constants file
 class UsersController extends Controller
 {
 
@@ -18,6 +21,11 @@ class UsersController extends Controller
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * @param Request $request
+     * @return ResponseFactory|JsonResponse|Response|object
+     * @throws \Exception
+     */
     public function login(Request $request)
     {
         $validation_response = Validator::make($request->all(), [
@@ -33,16 +41,11 @@ class UsersController extends Controller
         }
         $email = $request["email"];
         $password = $request["password"];
-        try {
-            $login_response = $this->userRepository->validateCredentials($email, $password);
-            return response()->json($login_response)->setStatusCode(200);
-        } catch (\Exception $e) {
-            // Can also do this with Resource
-            return response()->json([
-                "code" => 500,
-                "message" => $e->getMessage()
-            ])->setStatusCode(500);
+        $login_response = $this->userRepository->validateCredentials($email, $password);
+        return response($login_response, 200, [
+            'Authorization' => 'Bearer ' . $login_response['token'],
+            'Accept' => 'application/json',
+        ]);
 
-        }
     }
 }

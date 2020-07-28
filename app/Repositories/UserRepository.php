@@ -33,14 +33,15 @@ class UserRepository
             throw new Exception();
         }
         $user = auth()->user();
-        $user->api_token = $this->generateApiToken();
+        $token = $this->generateApiToken();
+        $user->api_token = hash('sha256', $token);
         $user->save();
         //TODO: Use Model Transformer
         return [
             "id" => $user->id,
             "name" => $user->name,
             "email" => $user->email,
-            "token" => $user->api_token,
+            "token" => $token,
             "timestamp" => date("Y-m-d h:i:s")
         ];
     }

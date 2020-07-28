@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::prefix("auth")->namespace("Api")->group(function () {
     Route::post("login", [
         "uses" => "UsersController@login",
@@ -21,14 +20,13 @@ Route::prefix("auth")->namespace("Api")->group(function () {
     ]);
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::prefix("v1")->group(function () {
-    Route::get("data", function () {
-        return response()->json([
-            "data" => "as"
-        ]);
-    });
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:api', 'namespace' => 'Api'], function () {
+    Route::get("files", [
+        "uses" => "FileOpsController@fetchUserFiles",
+        "as" => "user_files"
+    ]);
+    Route::get("file/{fileId}", [
+        "uses" => "FileOpsController@fileById",
+        "as" => "file_by_id"
+    ]);
 });

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\FileModel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -39,6 +40,6 @@ class User extends Authenticatable
 
     public function file_access()
     {
-        return $this->hasMany("App\Model\FileModel", "access_level", "access_level");
+        return $this->hasMany(FileModel::class, "access_level", "access_level");
     }
 }
