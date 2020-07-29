@@ -5,11 +5,13 @@
 - Backend to be used: Laravel, mySQL or equivalent for DB
 - Optional: create Javascript client (web app) to connect to the REST API, the client should allow 2 PDFs to be uploaded
 
-### Pre-requisite
-1. **DB Name** - wealthtab
+### Prerequisite
+1. Laravel Setup
+2. MySQL Server
+3. Composer Dependency manager
 
 ### Quick Step
-- One can directly import the sql file into the MySQL Server located under **db/**
+- One can directly import the sql file into the MySQL Server located under **db/** with the database name **wealthtab**
 
 ## Starting App Instructions:
 1. **composer install** - For downloading the required dependencies
