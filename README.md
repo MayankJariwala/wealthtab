@@ -8,11 +8,13 @@
 ### Pre-requisite
 1. **DB Name** - wealthtab
 
+### Quick Step
+- One can directly import the sql file into the MySQL Server.
+
 ## Starting App Instructions:
 1. **composer install** - For downloading the required dependencies
-2. **php artisan migrate** - For migrating the database tables
-3. **php artisan db:seed** - For seeding the dummy data into the table
-4. **php artisan serve** - For running application
+2. **php artisan migrate && php artisan db:seed** - For create migrations and seeding the dummy data
+3. **php artisan serve** - For running application
 
 ## About Endpoints 
 
