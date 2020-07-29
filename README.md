@@ -9,7 +9,7 @@
 1. **DB Name** - wealthtab
 
 ### Quick Step
-- One can directly import the sql file into the MySQL Server.
+- One can directly import the sql file into the MySQL Server located under **db/**
 
 ## Starting App Instructions:
 1. **composer install** - For downloading the required dependencies
