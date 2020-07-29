@@ -15,7 +15,7 @@
 
 ## Starting App Instructions:
 1. **composer install** - For downloading the required dependencies
-2. **php artisan migrate && php artisan db:seed** - For create migrations and seeding the dummy data
+2. **(__Skip If Quick Step is chosen__) php artisan migrate && php artisan db:seed** - For create migrations and seeding the dummy data
 3. **php artisan serve** - For running application
 
 ## About Endpoints 
